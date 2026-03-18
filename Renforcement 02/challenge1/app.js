@@ -71,10 +71,14 @@ function convertDuration(songs) {
   return arr;
 }
 
-function convert(minute) {
+function calculate(minute){
   const min = Math.floor(minute / 60);
+  return min
+}
+
+function convert(minute) {
   const sec = minute % 60;
-  const formated = min + ":" + sec;
+  const formated = calculate(minute) + ":" + sec;
   return formated;
 }
 
@@ -94,6 +98,21 @@ function getLongestSong(songs) {
   return longest;
 }
 
+function checkDuration(songs, maxMin){
+  let arr = [];
+  songs.forEach((song)=>{
+    if (calculate(song.duration) <= maxMin) {
+      arr.push(song)
+    }
+  })
+  if (arr.length == 0) {
+    return `no songs are under or equal ${maxMin} `
+  }
+  return arr
+}
+
+//! console.log(convert(222));
+//! console.log(checkDuration(songs, 6));
 //! console.log(getLongestSong(songs));
 //! console.log(convertDuration(songs));
 //! console.log(calculateTotal(songs));
