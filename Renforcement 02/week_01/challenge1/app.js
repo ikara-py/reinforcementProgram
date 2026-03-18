@@ -133,7 +133,7 @@ function sortSongsByDuration(songs){
 }
 
 
-console.log(sortSongsByDuration(songs));
+//! console.log(sortSongsByDuration(songs));
 //! console.log(songs)
 //! console.log(getLatestSong(songs, 'Jazz'))
 //! console.log(convert(222));
