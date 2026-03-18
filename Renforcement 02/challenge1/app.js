@@ -5,15 +5,24 @@ const songs = [
     duration: 200,
     genre: "Pop",
   },
-  { title: "Bohemian Rhapsody", artist: "Queen", duration: 354, genre: "Rock" },
-  { title: "Shape of You", artist: "Ed Sheeran", duration: 233, genre: "Pop" },
+  { title: "Bohemian Rhapsody",
+    artist: "Queen",
+    duration: 354, 
+    genre: "Rock" },
+  { title: "Shape of You",
+    artist: "Ed Sheeran",
+    duration: 233, 
+    genre: "Pop" },
   {
     title: "Smells Like Teen Spirit",
     artist: "Nirvana",
     duration: 301,
     genre: "Rock",
   },
-  { title: "Take Five", artist: "Dave Brubeck", duration: 324, genre: "Jazz" },
+  { title: "Take Five", 
+    artist: "Dave Brubeck", 
+    duration: 324, 
+    genre: "Jazz" },
   {
     title: "Billie Jean",
     artist: "Michael Jackson",
@@ -26,14 +35,20 @@ const songs = [
     duration: 482,
     genre: "Rock",
   },
-  { title: "So What", artist: "Miles Davis", duration: 545, genre: "Jazz" },
+  { title: "So What", 
+    artist: "Miles Davis", 
+    duration: 545, 
+    genre: "Jazz" },
   {
     title: "Rolling in the Deep",
     artist: "Adele",
     duration: 228,
     genre: "Pop",
   },
-  { title: "Hotel California", artist: "Eagles", duration: 391, genre: "Rock" },
+  { title: "Hotel California", 
+    artist: "Eagles", 
+    duration: 391, 
+    genre: "Rock" },
 ];
 
 function showSongs(songs) {
@@ -50,13 +65,17 @@ function filterByGenre(songs, genre) {
 function convertDuration(songs) {
   const arr = [];
   songs.forEach((song) => {
-    const min = Math.floor(song.duration / 60);
-    const sec = song.duration % 60;
-    const formated = min + ":" + sec;
-    song.duration = formated;
+    song.duration = convert(song.duration);
     arr.push(song);
   });
   return arr;
+}
+
+function convert(minute) {
+  const min = Math.floor(minute / 60);
+  const sec = minute % 60;
+  const formated = min + ":" + sec;
+  return formated;
 }
 
 function calculateTotal(songs) {
@@ -64,12 +83,18 @@ function calculateTotal(songs) {
   songs.forEach((song) => {
     total += song.duration;
   });
-  const min = Math.floor(total / 60);
-  const sec = total % 60;
-  const formated = min + ":" + sec;
-  return formated;
+  return convert(total);
 }
 
+function getLongestSong(songs) {
+  const longest = songs.reduce((prevSong, current) => {
+    return prevSong.duration > current.duration ? prevSong : current;
+  });
+  longest.duration = convert(longest.duration);
+  return longest;
+}
+
+//! console.log(getLongestSong(songs));
 //! console.log(convertDuration(songs));
 //! console.log(calculateTotal(songs));
 //! console.log(filterByGenre(songs, 'Rock'));
