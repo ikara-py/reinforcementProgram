@@ -111,6 +111,31 @@ function checkDuration(songs, maxMin){
   return arr
 }
 
+
+function getLatestSong(songs, genre){
+  let arr = [];
+  songs.forEach((song) =>{
+    if (song.genre == genre) {
+      arr.push(song)
+    }
+  })
+  if(arr.length == 0){
+    return 'there is no song with that genre'
+  }
+  return arr[arr.length - 1]
+}
+
+function sortSongsByDuration(songs){
+  const safeCopy = [... songs]
+  return safeCopy.sort(function(a, b) {
+    return a.duration - b.duration ;
+  });
+}
+
+
+console.log(sortSongsByDuration(songs));
+//! console.log(songs)
+//! console.log(getLatestSong(songs, 'Jazz'))
 //! console.log(convert(222));
 //! console.log(checkDuration(songs, 6));
 //! console.log(getLongestSong(songs));
