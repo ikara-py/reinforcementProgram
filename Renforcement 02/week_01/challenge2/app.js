@@ -57,7 +57,32 @@ function getSummary(sales){
 }
 
 
+function findBestRevenue(sales){
+    const maxSale = sales.reduce((max, current) => {
+        return current.revenue > max.revenue ? current : max;
+    });
+    return maxSale;
+}
+
+
+function leastNumberOfClients(sales){
+    const lowClients = sales.reduce((low, current) => {
+        return current.number_of_clients < low.number_of_clients ? current : low;
+    });
+    return lowClients;
+}
+function descendingSort(sales){
+    const sorted = sales.sort(function(a, b) {
+        return parseFloat(b.revenue) - parseFloat(a.revenue);
+    });
+    return sorted;
+}
+
+
 //! getSummary(sales)
+//! console.log( descendingSort(sales));
+//! console.log(findBestRevenue(sales));
+//! console.log(leastNumberOfClients(sales));
 //! console.log(totalRevenue(sales));
 //! console.log(maxRevenue(sales, 50000));
 //! console.log(averageRevenue(sales));
